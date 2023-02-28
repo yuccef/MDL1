@@ -62,25 +62,30 @@ function Liste_Société_Utilisateurs()
 
 
 //Pour afficher il suffit d'appler l'une des deux fonctions (console)
-const prompt = require("prompt-sync")();   
 
+const prompt = require("prompt-sync")();    //inclusion  de prompt
+
+
+//on a utiliser le console.log puisque le \n ne marche pas avec le prompt
 console.log("   C'est quoi votre choix ? \n\
 1: Société   \n\
 2: Pays       \n\
 3: Quitter :\n ");
-const c = prompt(" ");
+
+
+const c = prompt(" ");  //récupérer la valeur taper par l'utilisateur
 
 console.log(`votre choix est :  ${c}`);
 
 
 if(c==1){
-    console.log((Liste_Société_Utilisateurs()));
+    console.log((Liste_Société_Utilisateurs())); //les societes
 }
 if(c==2){
-    console.log((Liste_Pays_Utilisateurs()));
+    console.log((Liste_Pays_Utilisateurs()));  //les pays
 }
 if(c==3){
-    console.log("Good bye");
+    console.log("Good bye");   //exit 
 }
 
 
