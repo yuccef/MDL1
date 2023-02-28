@@ -1,0 +1,17 @@
+{
+  "name": "mdl",
+  "version": "1.0.0",
+  "description": "Objectif du TD : Introduction à javascript-NodeJS",
+  "main": "test.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^3.0.0"
+  }
+}
