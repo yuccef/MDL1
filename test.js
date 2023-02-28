@@ -2,6 +2,7 @@ const fs = require("fs");
 let user = fs.readFileSync("users.json"); //importer le fichier "users.json"
 const tab = JSON.parse(user);  //recupérer le tableau du fichier importé
 
+
 //Parcourir le tableau en enregistrant les pays/sociétés dans une map tout en incrementant la valeurs pour les doublant.
  
 
@@ -60,11 +61,27 @@ function Liste_Société_Utilisateurs()
 }
 
 
-
 //Pour afficher il suffit d'appler l'une des deux fonctions (console)
-console.log((Liste_Société_Utilisateurs()));
-console.log((Liste_Pays_Utilisateurs()));
+const prompt = require("prompt-sync")();   
 
+console.log("   C'est quoi votre choix ? \n\
+1: Société   \n\
+2: Pays       \n\
+3: Quitter :\n ");
+const c = prompt(" ");
+
+console.log(`votre choix est :  ${c}`);
+
+
+if(c==1){
+    console.log((Liste_Société_Utilisateurs()));
+}
+if(c==2){
+    console.log((Liste_Pays_Utilisateurs()));
+}
+if(c==3){
+    console.log("Good bye");
+}
 
 
 
