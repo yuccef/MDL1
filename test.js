@@ -2,11 +2,12 @@ const fs = require("fs");
 let user = fs.readFileSync("users.json"); //importer le fichier "users.json"
 const tab = JSON.parse(user);  //recupérer le tableau du fichier importé
 
-
 //Parcourir le tableau en enregistrant les pays/sociétés dans une map tout en incrementant la valeurs pour les doublant.
  
+
+
 /**
- * 
+ * La fonction Liste_Pays_Utilisateurs() qui increment la valeurs de la clé à chaque redondance sinon met la valeur de la clé à 1 
  */
 function Liste_Pays_Utilisateurs()
 {
@@ -33,7 +34,9 @@ function Liste_Pays_Utilisateurs()
 }
 
 
-
+/**
+ * La fonction Liste_Société_Utilisateurs() qui increment la valeurs de la clé à chaque redondance  sinon met la valeur de la clé à 1 
+ */
 function Liste_Société_Utilisateurs()
 {
     var Mapp = new Map;
@@ -56,9 +59,9 @@ function Liste_Société_Utilisateurs()
     console.log(Mapp);
 }
 
-//Pour afficher il suffit d'appler l'une des deux fonctions
 
 
+//Pour afficher il suffit d'appler l'une des deux fonctions (console)
 console.log((Liste_Société_Utilisateurs()));
 console.log((Liste_Pays_Utilisateurs()));
 
