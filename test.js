@@ -1,7 +1,12 @@
 const fs = require("fs"); 
+const color = require("chalk");
 let user = fs.readFileSync("users.json"); //importer le fichier "users.json"
 const tab = JSON.parse(user);  //recupérer le tableau du fichier importé
 const prompt = require("prompt-sync")();    //inclusion  de prompt
+
+
+let  id, email, first, last, company1, created, country1;
+
 
 
 // la liste des couleurs  
@@ -20,6 +25,67 @@ console.log("Vous choisissez quelle couleur? \n\
 3: jaune :\n ");
 
 const v = prompt(" ");  //récupérer la valeur taper par l'utilisateur
+
+
+/**
+ * La fonction recuperer() recupere les infos de l'utilisateur
+ */
+function recuperer(){
+
+    console.log(color.green("Quel est l`id ? \n"));
+    id = prompt(" ");
+
+    console.log(color.green("Quel est le prenom ? \n"));
+    email = prompt(" ");
+
+    console.log(color.green("Quel est le prenom ? \n"));
+    first = prompt(" ");
+
+    console.log(color.green("Quel est le nom? \n"));
+    last = prompt(" ");
+
+    console.log(color.green("Quel est le nom de la société ? \n"));
+    company1 = prompt(" ");
+
+    console.log(color.green("Quand a elle été créee ? \n"));
+    created = prompt(" ");
+    
+    console.log(color.green("Quel est en est le pays ? \n"));
+    country1 = prompt(" ");
+    
+}
+recuperer();
+
+
+
+/**
+ * La fonction ajouter() ajoute les nouveaux infos sur la table
+ */
+function ajouter(){
+    user = {
+        id: id,
+        email: email,
+        first: first,
+        last: last,
+        company: company1,
+        created_at: created,
+        country: country1
+    };
+
+
+    tab.push(user);
+
+    var newdata = JSON.stringify(tab);
+    fs.writeFile("users.json", newdata, err => {
+        // error checking
+        if(err) throw err;
+        
+        console.log("Utilisateur ajouté");
+    });
+}
+ajouter();
+
+
 
 
 
@@ -95,45 +161,77 @@ function Liste_Société_Utilisateurs()
 
 }
    
-
-
+/**
+ * La fonction afficher() s'occupe d'affichage
+ */
+function afficher(){
 //on a utiliser le console.log puisque le \n ne marche pas avec le prompt
-console.log("C'est quoi votre choix ? \n\
+    console.log("C'est quoi votre choix ? \n\
 1: Société   \n\
 2: Pays       \n\
 3: Quitter :\n ");
 
 
-const c = prompt(" ");  //récupérer la valeur taper par l'utilisateur
+    const c = prompt(" ");  //récupérer la valeur taper par l'utilisateur
 
-console.log(`vous avez choisi la couleur numero :  ${v}`); //le numero de couleur
-console.log(`et votre choix est du numero :  ${c}`); //pour afficher le choix saisi
-
-
+    console.log(`vous avez choisi la couleur numero :  ${v}`); //le numero de couleur
+    console.log(`et votre choix est du numero :  ${c}`); //pour afficher le choix saisi
 
 
 
-if(c==1){ //les societes
+
+
+    if(c==1){ //les societes
    
-    console.log((Liste_Société_Utilisateurs())); 
+        console.log((Liste_Société_Utilisateurs())); 
   
-}
-if(c==2){  //les pays   
-    console.log((Liste_Pays_Utilisateurs())); 
-}
+    }
+    if(c==2){  //les pays   
+        console.log((Liste_Pays_Utilisateurs())); 
+    }
    
 
-if(c==3){     //exit  
-    if(v==1){
-        console.log("\x1b[36m%s\x1b[0m","Good bye"); 
-    }
-    else if (v==2) {
-        console.log("\x1b[31m%s\x1b[0m","Good bye");
-    }
-    else if (v==3) {
-        console.log("\x1b[33m%s\x1b[0m","Good bye");
-    }
+    if(c==3){     //exit  
+        if(v==1){
+            console.log("\x1b[36m%s\x1b[0m","Good bye"); 
+        }
+        else if (v==2) {
+            console.log("\x1b[31m%s\x1b[0m","Good bye");
+        }
+        else if (v==3) {
+            console.log("\x1b[33m%s\x1b[0m","Good bye"); 
+        }
+    } 
+
 }
+afficher();
+
+
+/**
+ * Le main
+ */
+function main(){
+   
+    afficher();
+}
+main();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
